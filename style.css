@@ -1,0 +1,1221 @@
+/* RESET E VARIABILI */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --nero: #0a0a0a;
+    --nero-chiaro: #1a1a1a;
+    --bianco: #ffffff;
+    --beige: #f8f5f0;
+    --beige-chiaro: #fdfbf7;
+    --oro: #d4af37;
+    --oro-chiaro: #e8d9a9;
+    --oro-scuro: #b49450;
+    --grigio: #8a8a8a;
+    --grigio-chiaro: #eaeaea;
+    --spazio-piccolo: 0.5rem;
+    --spazio-medio: 1rem;
+    --spazio-grande: 2rem;
+    --spazio-xl: 3rem;
+    --spazio-xxl: 5rem;
+    --ombra: 0 5px 15px rgba(0, 0, 0, 0.05);
+    --ombra-forte: 0 15px 35px rgba(0, 0, 0, 0.1);
+    --ombra-oro: 0 5px 20px rgba(212, 175, 55, 0.3);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    color: var(--nero);
+    background-color: var(--beige);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: 'Lato', sans-serif;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* ANIMAZIONI GENERALI */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+@keyframes dropFall {
+    0% {
+        top: -100px;
+        transform: rotate(20deg);
+    }
+    100% {
+        top: 110%;
+        transform: rotate(80deg);
+    }
+}
+
+@keyframes vaporize {
+    0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(-400px) scale(3);
+        opacity: 0;
+    }
+}
+
+@keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+}
+
+/* HEADER */
+.main-header {
+    height: 80vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--nero);
+}
+
+.header-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://images.unsplash.com/photo-1543853128-8b3063236c4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.4;
+    z-index: 1;
+    animation: fadeIn 2s ease;
+}
+
+/* GOCCE ANIMATE */
+.floating-drops {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.drop {
+    position: absolute;
+    top: -100px;
+    width: 20px;
+    height: 30px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(212,175,55,0.2) 100%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: dropFall 8s infinite ease-in;
+    transform: rotate(20deg);
+    z-index: 2;
+}
+
+.header-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    color: var(--bianco);
+    padding: var(--spazio-grande);
+    animation: fadeInUp 1.2s ease;
+}
+
+.brand-name {
+    font-family: 'Cinzel', serif;
+    font-size: 6rem;
+    font-weight: 700;
+    letter-spacing: 0.5rem;
+    margin-bottom: var(--spazio-medio);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    position: relative;
+    display: inline-block;
+}
+
+.animate-text {
+    background: linear-gradient(135deg, #fff 0%, var(--oro) 50%, #fff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    animation: gradientFlow 3s linear infinite;
+}
+
+.brand-name::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--oro), transparent);
+    animation: shine 3s infinite;
+}
+
+.brand-subtitle {
+    font-size: 1.3rem;
+    font-weight: 300;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0;
+    animation: fadeInUp 1.2s ease 0.3s forwards;
+}
+
+.header-scroll {
+    margin-top: 50px;
+    animation: float 2s infinite;
+}
+
+.header-scroll span {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+}
+
+.header-scroll i {
+    font-size: 1.2rem;
+}
+
+/* NAVIGAZIONE */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--ombra-forte);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spazio-medio) var(--spazio-grande);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.nav-brand .nav-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1rem;
+    color: var(--nero);
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled .nav-logo {
+    color: var(--oro);
+}
+
+.nav-menu {
+    display: flex;
+    gap: var(--spazio-grande);
+}
+
+.nav-link {
+    font-weight: 400;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    padding: var(--spazio-piccolo) 0;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--oro);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--oro);
+}
+
+.nav-cart {
+    position: relative;
+}
+
+.cart-btn {
+    position: relative;
+    background-color: var(--nero);
+    color: var(--bianco);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.cart-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.cart-btn:active::after {
+    width: 100px;
+    height: 100px;
+}
+
+.cart-btn:hover {
+    background-color: var(--oro);
+    transform: translateY(-2px);
+    box-shadow: var(--ombra-oro);
+}
+
+.cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: var(--oro);
+    color: var(--nero);
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.hamburger {
+    display: none;
+    font-size: 1.5rem;
+    color: var(--nero);
+    background: none;
+}
+
+/* CARRELLO */
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 100%;
+    max-width: 400px;
+    height: 100%;
+    background-color: var(--bianco);
+    z-index: 1100;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cart-sidebar.active {
+    right: 0;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spazio-grande);
+    border-bottom: 1px solid var(--grigio-chiaro);
+    background: linear-gradient(135deg, var(--bianco), var(--beige));
+}
+
+.cart-header h3 {
+    font-size: 1.5rem;
+    color: var(--nero);
+}
+
+.close-cart {
+    font-size: 1.5rem;
+    color: var(--grigio);
+    transition: all 0.3s ease;
+}
+
+.close-cart:hover {
+    color: var(--oro);
+    transform: rotate(90deg);
+}
+
+.cart-items {
+    flex: 1;
+    padding: var(--spazio-grande);
+    overflow-y: auto;
+}
+
+.empty-cart-msg {
+    text-align: center;
+    color: var(--grigio);
+    font-style: italic;
+    padding: var(--spazio-xxl) 0;
+}
+
+.cart-footer {
+    padding: var(--spazio-grande);
+    border-top: 1px solid var(--grigio-chiaro);
+    background: var(--beige);
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--spazio-grande);
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.checkout-btn {
+    width: 100%;
+    background-color: var(--nero);
+    color: var(--bianco);
+    padding: var(--spazio-medio);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.checkout-btn:hover:not(:disabled) {
+    background-color: var(--oro);
+    color: var(--nero);
+    transform: translateY(-2px);
+    box-shadow: var(--ombra-oro);
+}
+
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1050;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.cart-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* EFFETTO VAPORE */
+.vapor-effect {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.vapor {
+    position: absolute;
+    bottom: 0;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: vaporize 15s infinite ease-out;
+}
+
+.vapor:nth-child(1) { left: 5%; animation-delay: 0s; }
+.vapor:nth-child(2) { left: 25%; animation-delay: 3s; }
+.vapor:nth-child(3) { left: 45%; animation-delay: 6s; }
+.vapor:nth-child(4) { left: 65%; animation-delay: 9s; }
+.vapor:nth-child(5) { left: 85%; animation-delay: 12s; }
+
+/* PROMO BANNER */
+.promo-banner {
+    background: linear-gradient(135deg, var(--nero) 0%, var(--nero-chiaro) 50%, var(--nero) 100%);
+    color: var(--bianco);
+    padding: 60px 20px;
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.promo-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+    animation: shimmer 6s infinite;
+}
+
+.promo-container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.promo-tag {
+    display: inline-block;
+    background-color: var(--oro);
+    color: var(--nero);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.promo-banner h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    color: var(--bianco);
+}
+
+.promo-subtitle {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.highlight {
+    color: var(--oro);
+    font-weight: 700;
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+.promo-text {
+    color: #e8e1d7;
+    margin-bottom: 25px;
+    font-size: 1.2rem;
+}
+
+.promo-code {
+    background: rgba(212, 175, 55, 0.15);
+    padding: 20px 40px;
+    display: inline-block;
+    border-radius: 50px;
+    border: 2px solid var(--oro);
+    margin-bottom: 20px;
+    backdrop-filter: blur(5px);
+}
+
+.glow {
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+    animation: pulse 3s infinite;
+}
+
+.code {
+    font-family: 'Cinzel', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 8px;
+    color: var(--oro);
+}
+
+.copy-code-btn {
+    background: transparent;
+    color: var(--oro);
+    border: 1px solid var(--oro);
+    padding: 10px 25px;
+    border-radius: 30px;
+    margin-left: 15px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.copy-code-btn:hover {
+    background: var(--oro);
+    color: var(--nero);
+    transform: scale(1.05);
+}
+
+.promo-note {
+    font-size: 0.9rem;
+    color: var(--grigio);
+    margin-top: 20px;
+}
+
+/* PRODOTTI */
+.featured-section {
+    padding: var(--spazio-xxl) 0;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: var(--spazio-xxl);
+    padding: 0 var(--spazio-medio);
+}
+
+.section-title {
+    font-size: 3rem;
+    margin-bottom: var(--spazio-piccolo);
+    color: var(--nero);
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, var(--nero) 0%, var(--oro) 50%, var(--nero) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    animation: gradientFlow 4s linear infinite;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: var(--grigio);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.perfumes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    padding: 0 var(--spazio-medio);
+}
+
+.perfume-card {
+    background-color: var(--bianco);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--ombra);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+    position: relative;
+}
+
+.perfume-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.15), transparent);
+    transition: left 0.7s ease;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.perfume-card:hover::before {
+    left: 100%;
+}
+
+.perfume-card:nth-child(1) { animation-delay: 0.1s; }
+.perfume-card:nth-child(2) { animation-delay: 0.3s; }
+.perfume-card:nth-child(3) { animation-delay: 0.5s; }
+.perfume-card:nth-child(4) { animation-delay: 0.7s; }
+
+.perfume-card:hover {
+    transform: translateY(-15px);
+    box-shadow: var(--ombra-forte);
+}
+
+.perfume-image {
+    position: relative;
+    height: 350px;
+    overflow: hidden;
+}
+
+.perfume-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.perfume-card:hover .perfume-image::after {
+    opacity: 1;
+}
+
+.perfume-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.perfume-card:hover .perfume-image img {
+    transform: scale(1.1);
+}
+
+.perfume-info {
+    padding: var(--spazio-grande);
+    position: relative;
+    background: var(--bianco);
+}
+
+.perfume-name {
+    font-size: 1.6rem;
+    margin-bottom: var(--spazio-piccolo);
+    color: var(--nero);
+    transition: color 0.3s ease;
+}
+
+.perfume-card:hover .perfume-name {
+    color: var(--oro);
+}
+
+.perfume-desc {
+    color: var(--grigio);
+    margin-bottom: var(--spazio-medio);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.perfume-price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--oro);
+    margin-bottom: var(--spazio-medio);
+}
+
+.add-to-cart-btn {
+    width: 100%;
+    background-color: var(--nero);
+    color: var(--bianco);
+    padding: var(--spazio-medio);
+    border-radius: 6px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spazio-piccolo);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.add-to-cart-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.add-to-cart-btn:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+.add-to-cart-btn:hover {
+    background-color: var(--oro);
+    color: var(--nero);
+    transform: translateY(-2px);
+    box-shadow: var(--ombra-oro);
+}
+
+/* CHI SIAMO */
+.about-section {
+    padding: var(--spazio-xxl) var(--spazio-medio);
+    background-color: var(--beige-chiaro);
+    margin-top: var(--spazio-xxl);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.about-text {
+    max-width: 800px;
+    margin: 0 auto var(--spazio-xxl);
+    text-align: center;
+}
+
+.about-text p {
+    margin-bottom: var(--spazio-medio);
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--grigio);
+}
+
+.about-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spazio-xl);
+    text-align: center;
+}
+
+.feature {
+    padding: var(--spazio-xl);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: var(--ombra);
+}
+
+.floating {
+    animation: float 3s infinite ease-in-out;
+}
+
+.feature i {
+    font-size: 3rem;
+    color: var(--oro);
+    margin-bottom: var(--spazio-medio);
+}
+
+.feature h4 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spazio-piccolo);
+    color: var(--nero);
+}
+
+.feature p {
+    color: var(--grigio);
+    line-height: 1.7;
+}
+
+/* ACCOUNT */
+.account-section {
+    padding: var(--spazio-xxl) var(--spazio-medio);
+    position: relative;
+    z-index: 10;
+}
+
+.account-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.account-header {
+    text-align: center;
+    margin-bottom: var(--spazio-xxl);
+}
+
+.account-forms {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spazio-xl);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.login-form, .register-form {
+    background-color: var(--bianco);
+    padding: var(--spazio-xl);
+    border-radius: 16px;
+    box-shadow: var(--ombra-forte);
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.slide-in {
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.login-form h3, .register-form h3 {
+    font-size: 1.8rem;
+    margin-bottom: var(--spazio-grande);
+    text-align: center;
+    color: var(--nero);
+}
+
+.form-group {
+    margin-bottom: var(--spazio-medio);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--spazio-piccolo);
+    font-weight: 700;
+    color: var(--nero);
+}
+
+.form-group input {
+    width: 100%;
+    padding: var(--spazio-medio);
+    border: 2px solid var(--grigio-chiaro);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--oro);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+.form-btn {
+    width: 100%;
+    background-color: var(--nero);
+    color: var(--bianco);
+    padding: var(--spazio-medio);
+    border-radius: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    transition: all 0.3s ease;
+    margin-top: var(--spazio-medio);
+}
+
+.form-btn:hover {
+    background-color: var(--oro);
+    color: var(--nero);
+    transform: translateY(-2px);
+    box-shadow: var(--ombra-oro);
+}
+
+/* FOOTER */
+.main-footer {
+    background-color: var(--nero);
+    color: var(--bianco);
+    padding-top: var(--spazio-xxl);
+    position: relative;
+    z-index: 10;
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spazio-medio);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--spazio-xl);
+    margin-bottom: var(--spazio-xl);
+}
+
+.footer-brand {
+    margin-bottom: var(--spazio-medio);
+}
+
+.footer-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem;
+    letter-spacing: 0.2rem;
+    margin-bottom: var(--spazio-piccolo);
+    color: var(--oro);
+}
+
+.footer-tagline 
+/* FIX PER TELEFONO - DA AGGIUNGERE IN FINALE */
+@media (max-width: 600px) {
+    .brand-name {
+        font-size: 2.5rem !important;
+        letter-spacing: 2px !important;
+    }
+    
+    .brand-subtitle {
+        font-size: 0.9rem !important;
+        padding: 0 15px !important;
+    }
+    
+    .perfumes-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+        padding: 0 15px !important;
+    }
+    
+    .perfume-card {
+        margin-bottom: 10px !important;
+    }
+    
+    .perfume-image {
+        height: 250px !important;
+    }
+    
+    .perfume-name {
+        font-size: 1.4rem !important;
+    }
+    
+    .perfume-desc {
+        font-size: 0.9rem !important;
+    }
+    
+    .promo-banner h3 {
+        font-size: 1.4rem !important;
+    }
+    
+    .code {
+        font-size: 1.4rem !important;
+        letter-spacing: 3px !important;
+    }
+    
+    .promo-code {
+        padding: 12px 20px !important;
+    }
+    
+    .section-title {
+        font-size: 2rem !important;
+    }
+    
+    .about-features {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .footer-container {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .footer-links {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .contact-page {
+        padding: 40px 15px !important;
+    }
+    
+    .newsletter-box {
+        padding: 30px 15px !important;
+    }
+    
+    iframe {
+        height: 700px !important;
+    }
+}
+/* FIX COMPLETO PER REDMI NOTE E TELEFONI */
+@media (max-width: 480px) {
+    /* HEADER */
+    .brand-name {
+        font-size: 2rem !important;
+        letter-spacing: 1px !important;
+        line-height: 1.2 !important;
+    }
+    
+    .brand-subtitle {
+        font-size: 0.8rem !important;
+        letter-spacing: 1px !important;
+        padding: 0 10px !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+    }
+    
+    .header-content {
+        padding: 10px !important;
+    }
+    
+    /* PRODOTTI - RISOLVERE TESTI TRONCATI */
+    .perfume-name {
+        font-size: 1.2rem !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+    }
+    
+    .perfume-desc {
+        font-size: 0.85rem !important;
+        line-height: 1.4 !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+        height: auto !important;
+        min-height: 60px !important;
+        overflow: visible !important;
+    }
+    
+    .perfumes-grid {
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+        padding: 0 10px !important;
+    }
+    
+    .perfume-card {
+        width: 100% !important;
+        margin: 0 !important;
+    }
+    
+    .perfume-image {
+        height: 200px !important;
+    }
+    
+    .perfume-info {
+        padding: 15px !important;
+    }
+    
+    /* MENU */
+    .nav-menu {
+        width: 100% !important;
+    }
+    
+    .nav-link {
+        font-size: 0.9rem !important;
+        padding: 10px !important;
+    }
+    
+    /* PROMO */
+    .promo-banner h3 {
+        font-size: 1.2rem !important;
+    }
+    
+    .promo-subtitle {
+        font-size: 1.1rem !important;
+    }
+    
+    .code {
+        font-size: 1.1rem !important;
+        letter-spacing: 2px !important;
+    }
+    
+    .promo-code {
+        padding: 8px 15px !important;
+    }
+    
+    /* SEZIONI */
+    .section-title {
+        font-size: 1.5rem !important;
+    }
+    
+    .section-subtitle {
+        font-size: 0.9rem !important;
+        padding: 0 10px !important;
+    }
+    
+    /* ABOUT */
+    .about-text p {
+        font-size: 0.9rem !important;
+    }
+    
+    .feature {
+        padding: 15px !important;
+    }
+    
+    .feature i {
+        font-size: 2rem !important;
+    }
+    
+    .feature h4 {
+        font-size: 1.1rem !important;
+    }
+    
+    /* FORM */
+    .login-form, .register-form {
+        padding: 20px !important;
+    }
+    
+    .form-group input {
+        padding: 10px !important;
+    }
+    
+    /* FOOTER */
+    .footer-logo {
+        font-size: 1.8rem !important;
+    }
+    
+    .footer-tagline {
+        font-size: 0.9rem !important;
+    }
+    
+    .footer-column h4 {
+        font-size: 1rem !important;
+    }
+}

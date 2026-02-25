@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inchiostro | profumi che raccontano storie</title>
+    
+    <!-- FONT E ICONE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Cinzel:wght@400;500;600;700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- IUBENDA (privacy e cookie) -->
+    <script type="text/javascript" src="https://embeds.iubenda.com/widgets/0746dd80-f275-43ae-bb1c-07e91432ff8a.js"></script>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- HEADER CON SFONDO PROFUMO E GOCCE ANIMATE -->
+    <header class="main-header">
+        <div class="header-background"></div>
+        <div class="floating-drops">
+            <div class="drop" style="left: 5%; animation-delay: 0s;"></div>
+            <div class="drop" style="left: 15%; animation-delay: 2.5s;"></div>
+            <div class="drop" style="left: 25%; animation-delay: 1.2s;"></div>
+            <div class="drop" style="left: 35%; animation-delay: 3.8s;"></div>
+            <div class="drop" style="left: 45%; animation-delay: 0.7s;"></div>
+            <div class="drop" style="left: 55%; animation-delay: 4.2s;"></div>
+            <div class="drop" style="left: 65%; animation-delay: 1.9s;"></div>
+            <div class="drop" style="left: 75%; animation-delay: 3.1s;"></div>
+            <div class="drop" style="left: 85%; animation-delay: 0.3s;"></div>
+            <div class="drop" style="left: 95%; animation-delay: 2.8s;"></div>
+        </div>
+        <div class="header-content">
+            <h1 class="brand-name animate-text">inchiostro</h1>
+            <p class="brand-subtitle">scegli il profumo che crea la tua storia</p>
+            <div class="header-scroll">
+                <span>Scopri</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVIGAZIONE CON BLUR -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="nav-logo">inchiostro</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">Homepage</a></li>
+                <li><a href="#prodotti" class="nav-link">Acquista</a></li>
+                <li><a href="#account" class="nav-link">Account</a></li>
+                <li><a href="#chi-siamo" class="nav-link">Chi siamo</a></li>
+                <li><a href="contatti.html" class="nav-link">Contatti</a></li>
+            </ul>
+            <div class="nav-cart">
+                <button class="cart-btn" id="cartButton">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </button>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- CARRELLO LATERALE -->
+    <aside class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Il tuo carrello</h3>
+            <button class="close-cart" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="empty-cart-msg">Il carrello è vuoto</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Totale:</span>
+                <span class="total-price">€0.00</span>
+            </div>
+            <button class="checkout-btn" id="checkoutBtn">Procedi al checkout</button>
+        </div>
+    </aside>
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- EFFETTO VAPORE DI FONDO -->
+    <div class="vapor-effect">
+        <div class="vapor"></div>
+        <div class="vapor"></div>
+        <div class="vapor"></div>
+        <div class="vapor"></div>
+        <div class="vapor"></div>
+    </div>
+
+    <!-- CONTENUTO PRINCIPALE -->
+    <main class="main-content">
+        
+        <!-- SEZIONE SCONTO (WELCOME20) CON ANIMAZIONE -->
+        <section class="promo-banner" id="home">
+            <div class="promo-container">
+                <span class="promo-tag">Offerta speciale</span>
+                <h3>✨ Un regalo per il tuo primo spruzzo ✨</h3>
+                <p class="promo-subtitle">Sblocca il <span class="highlight pulse">-20%</span></p>
+                <p class="promo-text">Ecco il codice per iniziare la nostra avventura insieme:</p>
+                <div class="promo-code glow">
+                    <span class="code">WELCOME20</span>
+                </div>
+                <button class="copy-code-btn" onclick="copyCode()">
+                    <i class="far fa-copy"></i> Copia codice
+                </button>
+                <p class="promo-note">*Valido sul primo acquisto. Non cumulabile.</p>
+            </div>
+        </section>
+
+        <!-- SEZIONE PRODOTTI CON ANIMAZIONI -->
+        <section class="featured-section" id="prodotti">
+            <div class="section-header">
+                <h2 class="section-title gradient-text">I nostri profumi</h2>
+                <p class="section-subtitle">Essenze artistiche per raccontare la tua storia</p>
+            </div>
+            
+            <div class="perfumes-grid" id="productsGrid">
+                <!-- I prodotti verranno caricati qui da JavaScript -->
+            </div>
+        </section>
+
+        <!-- SEZIONE CHI SIAMO -->
+        <section class="about-section" id="chi-siamo">
+            <div class="about-content">
+                <h2 class="section-title gradient-text">Chi siamo</h2>
+                <div class="about-text">
+                    <p>Inchiostro nasce dall'incontro tra l'arte della profumeria italiana e la ricerca di essenze rare e preziose. Ogni nostra creazione è una storia da raccontare, un'emozione da vivere.</p>
+                    <p>Il nostro atelier a Firenze unisce maestria artigianale e innovazione, creando profumi che diventano parte dell'identità di chi li indossa.</p>
+                </div>
+                <div class="about-features">
+                    <div class="feature floating">
+                        <i class="fas fa-leaf"></i>
+                        <h4>Ingredienti naturali</h4>
+                        <p>Selezioniamo materie prime pregiate da tutto il mondo</p>
+                    </div>
+                    <div class="feature floating" style="animation-delay: 0.2s;">
+                        <i class="fas fa-hand-sparkles"></i>
+                        <h4>Artigianalità</h4>
+                        <p>Ogni flacone è curato a mano nei nostri laboratori</p>
+                    </div>
+                    <div class="feature floating" style="animation-delay: 0.4s;">
+                        <i class="fas fa-recycle"></i>
+                        <h4>Sostenibilità</h4>
+                        <p>Packaging riciclabile e processi ecosostenibili</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEZIONE ACCOUNT -->
+        <section class="account-section" id="account">
+            <div class="account-container">
+                <div class="account-header">
+                    <h2 class="section-title gradient-text">Il tuo account</h2>
+                    <p class="section-subtitle">Accedi o registrati per gestire i tuoi ordini</p>
+                </div>
+                <div class="account-forms">
+                    <div class="login-form slide-in">
+                        <h3>Accesso</h3>
+                        <form id="loginForm">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" required>
+                            </div>
+                            <button type="submit" class="form-btn">Accedi</button>
+                        </form>
+                    </div>
+                    <div class="register-form slide-in" style="animation-delay: 0.2s;">
+                        <h3>Registrazione</h3>
+                        <form id="registerForm">
+                            <div class="form-group">
+                                <label for="reg-name">Nome</label>
+                                <input type="text" id="reg-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="reg-email">Email</label>
+                                <input type="email" id="reg-email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="reg-password">Password</label>
+                                <input type="password" id="reg-password" required>
+                            </div>
+                            <button type="submit" class="form-btn">Registrati</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER (con Privacy e Cookie) -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3 class="footer-logo">inchiostro</h3>
+                <p class="footer-tagline">scegli il profumo che crea la tua storia</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Esplora</h4>
+                    <ul>
+                        <li><a href="#home">Homepage</a></li>
+                        <li><a href="#prodotti">Acquista</a></li>
+                        <li><a href="#chi-siamo">Chi siamo</a></li>
+                        <li><a href="#account">Account</a></li>
+                        <li><a href="contatti.html">Contatti</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Supporto</h4>
+                    <ul>
+                        <li><a href="#">Spedizioni</a></li>
+                        <li><a href="#">Resi</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Privacy</h4>
+                    <ul>
+                        <li>
+                            <a href="https://www.iubenda.com/privacy-policy/10498934" class="iubenda-white iubenda-noiframe iubenda-embed">
+                                Privacy Policy
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.iubenda.com/privacy-policy/10498934/cookie-policy" class="iubenda-white iubenda-noiframe iubenda-embed">
+                                Cookie Policy
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- Script Iubenda -->
+                    <script type="text/javascript">
+                        (function (w,d) {
+                            var loader = function () {
+                                var s = d.createElement("script"), 
+                                    tag = d.getElementsByTagName("script")[0]; 
+                                s.src = "https://cdn.iubenda.com/iubenda.js"; 
+                                tag.parentNode.insertBefore(s,tag);
+                            };
+                            if(w.addEventListener) {
+                                w.addEventListener("load", loader, false);
+                            } else if(w.attachEvent) {
+                                w.attachEvent("onload", loader);
+                            } else {
+                                w.onload = loader;
+                            }
+                        })(window, document);
+                    </script>
+                </div>
+                <div class="footer-column">
+                    <h4>Seguici</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-hover"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-hover"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-hover"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 inchiostro. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <!-- NOTIFICA -->
+    <div class="toast" id="toast"></div>
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
+</body>
+</html>
