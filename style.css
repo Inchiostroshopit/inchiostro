@@ -1219,3 +1219,45 @@ img {
         font-size: 1rem !important;
     }
 }
+/* BANNER COOKIE - allineato con lo stile del sito */
+#gdpr-banner {
+    font-family: 'Lato', sans-serif;
+    border-top: 2px solid var(--oro);
+}
+
+.gdpr-btn {
+    font-family: 'Lato', sans-serif;
+    transition: all 0.3s ease;
+}
+
+#btn-accept-all {
+    background: var(--oro) !important;
+    color: var(--nero) !important;
+    font-weight: 700 !important;
+}
+
+#btn-accept-all:hover {
+    background: var(--oro-scuro) !important;
+    transform: translateY(-2px);
+    box-shadow: var(--ombra-oro);
+}
+
+#btn-save {
+    border: 1px solid var(--oro) !important;
+    color: var(--oro) !important;
+}
+
+#btn-save:hover {
+    background: rgba(212, 175, 55, 0.1) !important;
+    border-color: var(--oro-chiaro) !important;
+    color: var(--oro-chiaro) !important;
+}
+
+.gdpr-switch-label input {
+    accent-color: var(--oro) !important;
+}
+
+.gdpr-text {
+    font-size: 0.9rem !important;
+    letter-spacing: 0.3px;
+}
