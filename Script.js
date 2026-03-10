@@ -49,17 +49,58 @@ const navLinks = document.querySelectorAll('.nav-link');
 const toast = document.getElementById('toast');
 const navbar = document.getElementById('navbar');
 
-// INIZIALIZZA
-document.addEventListener('DOMContentLoaded', function() {
+// FUNZIONE PER CARICARE PRODOTTI (FORZATA)
+function loadProducts() {
+    console.log("Tentativo di caricamento prodotti...");
+    if (!productsGrid) {
+        console.error("productsGrid NON TROVATO!");
+        return;
+    }
+    
+    let html = '';
+    products.forEach(product => {
+        html += `
+            <article class="perfume-card">
+                <div class="perfume-image">
+                    <img src="${product.image}" alt="${product.name}" loading="lazy">
+                </div>
+                <div class="perfume-info">
+                    <h3 class="perfume-name">${product.name}</h3>
+                    <p class="perfume-desc">${product.description}</p>
+                    <div class="perfume-price">€${product.price.toFixed(2)}</div>
+                    <button class="add-to-cart-btn" 
+                            data-id="${product.id}"
+                            data-name="${product.name}"
+                            data-price="${product.price}"
+                            data-image="${product.image}">
+                        <i class="fas fa-plus"></i> Aggiungi al carrello
+                    </button>
+                </div>
+            </article>
+        `;
+    });
+    
+    productsGrid.innerHTML = html;
+    console.log("Prodotti caricati con successo!");
+    
+    // Aggiungi event listener ai bottoni
+    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+        button.addEventListener('click', addToCart);
+    });
+}
+
+// INIZIALIZZA (con pi� tentativi)
+function init() {
+    console.log("Inizializzazione...");
     loadProducts();
     updateCartUI();
     
     // EVENT LISTENERS
-    cartButton.addEventListener('click', toggleCart);
-    closeCart.addEventListener('click', toggleCart);
-    cartOverlay.addEventListener('click', toggleCart);
-    checkoutBtn.addEventListener('click', checkout);
-    hamburger.addEventListener('click', toggleMobileMenu);
+    if (cartButton) cartButton.addEventListener('click', toggleCart);
+    if (closeCart) closeCart.addEventListener('click', toggleCart);
+    if (cartOverlay) cartOverlay.addEventListener('click', toggleCart);
+    if (checkoutBtn) checkoutBtn.addEventListener('click', checkout);
+    if (hamburger) hamburger.addEventListener('click', toggleMobileMenu);
     
     navLinks.forEach(link => {
         link.addEventListener('click', handleNavClick);
@@ -84,45 +125,16 @@ document.addEventListener('DOMContentLoaded', function() {
             this.reset();
         });
     }
-});
-
-// CARICA PRODOTTI
-function loadProducts() {
-    if (!productsGrid) return;
-    
-    let html = '';
-    
-    products.forEach(product => {
-        html += `
-            <article class="perfume-card">
-                <div class="perfume-image">
-                    <img src="${product.image}" alt="${product.name}">
-                </div>
-                <div class="perfume-info">
-                    <h3 class="perfume-name">${product.name}</h3>
-                    <p class="perfume-desc">${product.description}</p>
-                    <div class="perfume-price">€${product.price.toFixed(2)}</div>
-                    <button class="add-to-cart-btn" 
-                            data-id="${product.id}"
-                            data-name="${product.name}"
-                            data-price="${product.price}"
-                            data-image="${product.image}">
-                        <i class="fas fa-plus"></i> Aggiungi al carrello
-                    </button>
-                </div>
-            </article>
-        `;
-    });
-    
-    productsGrid.innerHTML = html;
-    
-    // Aggiungi event listener ai bottoni
-    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
-        button.addEventListener('click', addToCart);
-    });
 }
 
-// CARRELLO
+// Tenta pi� volte l'inizializzazione
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+} else {
+    init();
+}
+
+// CARRELLO (tutte le funzioni uguali)
 function toggleCart() {
     cartSidebar.classList.toggle('active');
     cartOverlay.classList.toggle('active');
@@ -136,7 +148,6 @@ function addToCart(e) {
     const price = parseFloat(button.getAttribute('data-price'));
     const image = button.getAttribute('data-image');
     
-    // Animazione bottone
     button.style.transform = 'scale(0.95)';
     setTimeout(() => {
         button.style.transform = '';
@@ -163,24 +174,29 @@ function addToCart(e) {
 
 function updateCartUI() {
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    cartCount.textContent = totalItems;
+    if (cartCount) cartCount.textContent = totalItems;
     
-    // Animazione contatore
-    cartCount.style.transform = 'scale(1.2)';
-    setTimeout(() => {
-        cartCount.style.transform = '';
-    }, 200);
+    if (cartCount) {
+        cartCount.style.transform = 'scale(1.2)';
+        setTimeout(() => {
+            cartCount.style.transform = '';
+        }, 200);
+    }
     
     if (cart.length === 0) {
-        cartItemsContainer.innerHTML = '<p class="empty-cart-msg">Il carrello è vuoto</p>';
-        totalPrice.textContent = '€0.00';
-        checkoutBtn.disabled = true;
-        checkoutBtn.style.opacity = '0.6';
+        if (cartItemsContainer) cartItemsContainer.innerHTML = '<p class="empty-cart-msg">Il carrello è vuoto</p>';
+        if (totalPrice) totalPrice.textContent = '€0.00';
+        if (checkoutBtn) {
+            checkoutBtn.disabled = true;
+            checkoutBtn.style.opacity = '0.6';
+        }
         return;
     }
     
-    checkoutBtn.disabled = false;
-    checkoutBtn.style.opacity = '1';
+    if (checkoutBtn) {
+        checkoutBtn.disabled = false;
+        checkoutBtn.style.opacity = '1';
+    }
     
     let cartHTML = '';
     let total = 0;
@@ -201,8 +217,8 @@ function updateCartUI() {
         `;
     });
     
-    cartItemsContainer.innerHTML = cartHTML;
-    totalPrice.textContent = `€${total.toFixed(2)}`;
+    if (cartItemsContainer) cartItemsContainer.innerHTML = cartHTML;
+    if (totalPrice) totalPrice.textContent = `€${total.toFixed(2)}`;
     
     document.querySelectorAll('.cart-item-remove').forEach(button => {
         button.addEventListener('click', removeFromCart);
@@ -213,10 +229,11 @@ function removeFromCart(e) {
     const button = e.currentTarget;
     const id = button.getAttribute('data-id');
     
-    // Animazione rimozione
     const cartItem = button.closest('.cart-item');
-    cartItem.style.transform = 'translateX(100px)';
-    cartItem.style.opacity = '0';
+    if (cartItem) {
+        cartItem.style.transform = 'translateX(100px)';
+        cartItem.style.opacity = '0';
+    }
     
     setTimeout(() => {
         cart = cart.filter(item => item.id !== id);
@@ -240,7 +257,6 @@ function checkout() {
     }, 1500);
 }
 
-// COPIA CODICE SCONTO
 window.copyCode = function() {
     const code = 'WELCOME20';
     navigator.clipboard.writeText(code).then(() => {
@@ -250,20 +266,20 @@ window.copyCode = function() {
     });
 };
 
-// MENU MOBILE
 function toggleMobileMenu() {
     navMenu.classList.toggle('active');
     const icon = hamburger.querySelector('i');
-    if (navMenu.classList.contains('active')) {
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-times');
-    } else {
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
+    if (icon) {
+        if (navMenu.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
     }
 }
 
-// NAVIGAZIONE
 function handleNavClick(e) {
     e.preventDefault();
     
@@ -272,8 +288,10 @@ function handleNavClick(e) {
     
     navMenu.classList.remove('active');
     const icon = hamburger.querySelector('i');
-    icon.classList.remove('fa-times');
-    icon.classList.add('fa-bars');
+    if (icon) {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+    }
     
     const targetId = this.getAttribute('href');
     const targetSection = document.querySelector(targetId);
@@ -286,33 +304,25 @@ function handleNavClick(e) {
     }
 }
 
-// TOAST
 function showToast(message, type = 'info') {
+    if (!toast) return;
     toast.textContent = message;
-    
-    toast.style.backgroundColor = type === 'success' ? '#4caf50' : 
-                                 type === 'error' ? '#f44336' : 
-                                 '#0a0a0a';
-    
+    toast.style.backgroundColor = type === 'success' ? '#4caf50' : type === 'error' ? '#f44336' : '#0a0a0a';
     toast.classList.add('show');
-    
     setTimeout(() => {
         toast.classList.remove('show');
     }, 3000);
 }
 
-// SCROLL ATTIVO E NAVBAR BLUR
 window.addEventListener('scroll', () => {
     const scrollPosition = window.scrollY + 100;
     
-    // Navbar blur effect
     if (window.scrollY > 100) {
-        navbar.classList.add('scrolled');
+        navbar?.classList.add('scrolled');
     } else {
-        navbar.classList.remove('scrolled');
+        navbar?.classList.remove('scrolled');
     }
     
-    // Active nav links
     document.querySelectorAll('section').forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
@@ -328,13 +338,10 @@ window.addEventListener('scroll', () => {
         }
     });
 });
-// GESTIONE BANNER COOKIE (assicura che funzioni su tutte le pagine)
+
+// GESTIONE BANNER COOKIE
 document.addEventListener('DOMContentLoaded', function() {
-    // Se il banner esiste, lo script già incluso nell'HTML funziona
-    // Questa funzione assicura che il carrello funzioni anche dopo le scelte cookie
     console.log('Banner cookie attivo');
-    
-    // Eventuale refresh del carrello dopo consenso (se serve)
     const savedPrefs = document.cookie.match(/gdpr_preferences=([^;]+)/);
     if (savedPrefs) {
         console.log('Preferenze cookie caricate:', savedPrefs[1]);
