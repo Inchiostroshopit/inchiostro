@@ -49,7 +49,7 @@ const navLinks = document.querySelectorAll('.nav-link');
 const toast = document.getElementById('toast');
 const navbar = document.getElementById('navbar');
 
-// FUNZIONE PER CARICARE PRODOTTI (FORZATA)
+// FUNZIONE PER CARICARE PRODOTTI
 function loadProducts() {
     console.log("Tentativo di caricamento prodotti...");
     if (!productsGrid) {
@@ -83,19 +83,17 @@ function loadProducts() {
     productsGrid.innerHTML = html;
     console.log("Prodotti caricati con successo!");
     
-    // Aggiungi event listener ai bottoni
     document.querySelectorAll('.add-to-cart-btn').forEach(button => {
         button.addEventListener('click', addToCart);
     });
 }
 
-// INIZIALIZZA (con pi� tentativi)
+// INIZIALIZZA
 function init() {
     console.log("Inizializzazione...");
     loadProducts();
     updateCartUI();
     
-    // EVENT LISTENERS
     if (cartButton) cartButton.addEventListener('click', toggleCart);
     if (closeCart) closeCart.addEventListener('click', toggleCart);
     if (cartOverlay) cartOverlay.addEventListener('click', toggleCart);
@@ -106,7 +104,6 @@ function init() {
         link.addEventListener('click', handleNavClick);
     });
     
-    // FORM
     const loginForm = document.getElementById('loginForm');
     const registerForm = document.getElementById('registerForm');
     
@@ -127,14 +124,12 @@ function init() {
     }
 }
 
-// Tenta pi� volte l'inizializzazione
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
 } else {
     init();
 }
 
-// CARRELLO (tutte le funzioni uguali)
 function toggleCart() {
     cartSidebar.classList.toggle('active');
     cartOverlay.classList.toggle('active');
@@ -339,7 +334,6 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// GESTIONE BANNER COOKIE
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Banner cookie attivo');
     const savedPrefs = document.cookie.match(/gdpr_preferences=([^;]+)/);
