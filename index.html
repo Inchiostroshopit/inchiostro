@@ -5,16 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>inchiostro | profumi che raccontano storie</title>
 
-  <!-- FAVICON (AGGIUNGI QUI) -->
+    <!-- FAVICON -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23d4af37'>I</text></svg>">
     
-    <!-- Google Tag Manager (prima di tutto nella head) -->
+    <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-W9QRVGZM');</script>
-    <!-- End Google Tag Manager -->
     
     <!-- META DESCRIPTION -->
     <meta name="description" content="Scopri i nostri profumi esclusivi: fragranze uniche, eleganza e stile. Approfitta del 20% di sconto con il codice WELCOME20" />
@@ -25,10 +24,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Cinzel:wght@400;500;600;700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- IUBENDA NUOVO (attivazione) -->
+    <!-- IUBENDA -->
     <script type="text/javascript" src="https://embeds.iubenda.com/widgets/57328da2-478a-435b-9132-7f843cff44dc.js"></script>
     
-    <!-- JSON-LD (dati strutturati) -->
+    <!-- JSON-LD (per il negozio) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -47,12 +46,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) - subito dopo l'apertura del body -->
+    <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W9QRVGZM"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
 
-    <!-- HEADER CON SFONDO PROFUMO E GOCCE ANIMATE -->
+    <!-- HEADER -->
     <header class="main-header">
         <div class="header-background"></div>
         <div class="floating-drops">
@@ -77,14 +75,14 @@
         </div>
     </header>
 
-    <!-- NAVIGAZIONE CON BLUR -->
+    <!-- NAVIGAZIONE -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-brand">
-                <span class="nav-logo">inchiostro</span>
+                <a href="index.html" class="nav-logo">inchiostro</a>
             </div>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link active">Homepage</a></li>
+                <li><a href="index.html" class="nav-link active">Homepage</a></li>
                 <li><a href="#prodotti" class="nav-link">Acquista</a></li>
                 <li><a href="#account" class="nav-link">Account</a></li>
                 <li><a href="#chi-siamo" class="nav-link">Chi siamo</a></li>
@@ -102,7 +100,7 @@
         </div>
     </nav>
 
-    <!-- CARRELLO LATERALE -->
+    <!-- CARRELLO -->
     <aside class="cart-sidebar" id="cartSidebar">
         <div class="cart-header">
             <h3>Il tuo carrello</h3>
@@ -123,7 +121,7 @@
     </aside>
     <div class="cart-overlay" id="cartOverlay"></div>
 
-    <!-- EFFETTO VAPORE DI FONDO -->
+    <!-- EFFETTO VAPORE -->
     <div class="vapor-effect">
         <div class="vapor"></div>
         <div class="vapor"></div>
@@ -135,7 +133,7 @@
     <!-- CONTENUTO PRINCIPALE -->
     <main class="main-content">
         
-        <!-- SEZIONE SCONTO (WELCOME20) CON ANIMAZIONE -->
+        <!-- SEZIONE SCONTO -->
         <section class="promo-banner" id="home">
             <div class="promo-container">
                 <span class="promo-tag">Offerta speciale</span>
@@ -152,15 +150,103 @@
             </div>
         </section>
 
-        <!-- SEZIONE PRODOTTI CON ANIMAZIONI -->
+        <!-- SEZIONE PRODOTTI (ORA CON LINK ALLE PAGINE DEDICATE) -->
         <section class="featured-section" id="prodotti">
             <div class="section-header">
                 <h2 class="section-title gradient-text">I nostri profumi</h2>
                 <p class="section-subtitle">Essenze artistiche per raccontare la tua storia</p>
             </div>
             
-            <div class="perfumes-grid" id="productsGrid">
-                <!-- I prodotti verranno caricati qui da JavaScript -->
+            <div class="perfumes-grid">
+                
+                <!-- Prodotto 1 - Notturno Fiorentino -->
+                <a href="notturno-fiorentino.html" class="perfume-card-link" style="text-decoration: none; color: inherit;">
+                    <article class="perfume-card">
+                        <div class="perfume-image">
+                            <img src="https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=600&auto=format&fit=crop" alt="Notturno Fiorentino" loading="lazy">
+                        </div>
+                        <div class="perfume-info">
+                            <h3 class="perfume-name">Notturno Fiorentino</h3>
+                            <p class="perfume-desc">Un'essenza notturna che cattura l'arte di Firenze, con note di gelsomino, legno di sandalo e ambra grigia.</p>
+                            <div class="perfume-price">€189.00</div>
+                            <button class="add-to-cart-btn" 
+                                    data-id="1"
+                                    data-name="Notturno Fiorentino"
+                                    data-price="189.00"
+                                    data-image="https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=600&auto=format&fit=crop"
+                                    onclick="event.preventDefault(); addToCartFromHome(this)">
+                                <i class="fas fa-plus"></i> Aggiungi
+                            </button>
+                        </div>
+                    </article>
+                </a>
+                
+                <!-- Prodotto 2 - Oceano di Seta -->
+                <a href="oceano-di-seta.html" class="perfume-card-link" style="text-decoration: none; color: inherit;">
+                    <article class="perfume-card">
+                        <div class="perfume-image">
+                            <img src="https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=600&auto=format&fit=crop" alt="Oceano di Seta" loading="lazy">
+                        </div>
+                        <div class="perfume-info">
+                            <h3 class="perfume-name">Oceano di Seta</h3>
+                            <p class="perfume-desc">La brezza marina incontra fiori d'arancio e alghe marine per un viaggio sensoriale unico.</p>
+                            <div class="perfume-price">€165.00</div>
+                            <button class="add-to-cart-btn" 
+                                    data-id="2"
+                                    data-name="Oceano di Seta"
+                                    data-price="165.00"
+                                    data-image="https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=600&auto=format&fit=crop"
+                                    onclick="event.preventDefault(); addToCartFromHome(this)">
+                                <i class="fas fa-plus"></i> Aggiungi
+                            </button>
+                        </div>
+                    </article>
+                </a>
+                
+                <!-- Prodotto 3 - Giardino Segreto -->
+                <a href="giardino-segreto.html" class="perfume-card-link" style="text-decoration: none; color: inherit;">
+                    <article class="perfume-card">
+                        <div class="perfume-image">
+                            <img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=600&auto=format&fit=crop" alt="Giardino Segreto" loading="lazy">
+                        </div>
+                        <div class="perfume-info">
+                            <h3 class="perfume-name">Giardino Segreto</h3>
+                            <p class="perfume-desc">Un bouquet di rose bulgare, peonia bianca e violetta, avvolto da muschio e legno di cedro.</p>
+                            <div class="perfume-price">€210.00</div>
+                            <button class="add-to-cart-btn" 
+                                    data-id="3"
+                                    data-name="Giardino Segreto"
+                                    data-price="210.00"
+                                    data-image="https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=600&auto=format&fit=crop"
+                                    onclick="event.preventDefault(); addToCartFromHome(this)">
+                                <i class="fas fa-plus"></i> Aggiungi
+                            </button>
+                        </div>
+                    </article>
+                </a>
+                
+                <!-- Prodotto 4 - Pergamena Antica -->
+                <a href="pergamena-antica.html" class="perfume-card-link" style="text-decoration: none; color: inherit;">
+                    <article class="perfume-card">
+                        <div class="perfume-image">
+                            <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=600&auto=format&fit=crop" alt="Pergamena Antica" loading="lazy">
+                        </div>
+                        <div class="perfume-info">
+                            <h3 class="perfume-name">Pergamena Antica</h3>
+                            <p class="perfume-desc">Note di incenso, patchouli, vaniglia bourbon e un tocco di zafferano per un'essenza senza tempo.</p>
+                            <div class="perfume-price">€240.00</div>
+                            <button class="add-to-cart-btn" 
+                                    data-id="4"
+                                    data-name="Pergamena Antica"
+                                    data-price="240.00"
+                                    data-image="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=600&auto=format&fit=crop"
+                                    onclick="event.preventDefault(); addToCartFromHome(this)">
+                                <i class="fas fa-plus"></i> Aggiungi
+                            </button>
+                        </div>
+                    </article>
+                </a>
+                
             </div>
         </section>
 
@@ -237,7 +323,7 @@
         </section>
     </main>
 
-    <!-- FOOTER (con Privacy e Cookie NUOVI) -->
+    <!-- FOOTER -->
     <footer class="main-footer">
         <div class="footer-container">
             <div class="footer-brand">
@@ -248,7 +334,7 @@
                 <div class="footer-column">
                     <h4>Esplora</h4>
                     <ul>
-                        <li><a href="#home">Homepage</a></li>
+                        <li><a href="index.html">Homepage</a></li>
                         <li><a href="#prodotti">Acquista</a></li>
                         <li><a href="#chi-siamo">Chi siamo</a></li>
                         <li><a href="#account">Account</a></li>
@@ -266,24 +352,8 @@
                 <div class="footer-column">
                     <h4>Privacy</h4>
                     <ul>
-                        <li>
-                            <!-- NUOVA Privacy Policy Iubenda -->
-                            <a href="https://www.iubenda.com/privacy-policy/72901956" class="iubenda-black iubenda-noiframe iubenda-embed">
-                                Privacy Policy
-                            </a>
-                            <script type="text/javascript">
-                                (function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);
-                            </script>
-                        </li>
-                        <li>
-                            <!-- NUOVA Cookie Policy Iubenda -->
-                            <a href="https://www.iubenda.com/privacy-policy/72901956/cookie-policy" class="iubenda-black iubenda-noiframe iubenda-embed">
-                                Cookie Policy
-                            </a>
-                            <script type="text/javascript">
-                                (function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);
-                            </script>
-                        </li>
+                        <li><a href="https://www.iubenda.com/privacy-policy/72901956" class="iubenda-black">Privacy Policy</a></li>
+                        <li><a href="https://www.iubenda.com/privacy-policy/72901956/cookie-policy" class="iubenda-black">Cookie Policy</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -297,7 +367,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 inchiostro. Tutti i diritti riservati.</p>
+            <p>&copy; 2025 inchiostro. Tutti i diritti riservati.</p>
         </div>
     </footer>
 
@@ -306,8 +376,19 @@
 
     <!-- JAVASCRIPT -->
     <script src="script.js"></script>
+    <script>
+        // Funzione per aggiungere al carrello dalla homepage
+        window.addToCartFromHome = function(button) {
+            // Crea un evento finto per usare la funzione addToCart esistente
+            const fakeEvent = { currentTarget: button };
+            if (typeof addToCart === 'function') {
+                addToCart(fakeEvent);
+            }
+            // Previeni la navigazione verso la pagina prodotto
+            button.closest('a').addEventListener('click', function(e) {
+                e.preventDefault();
+            });
+        }
+    </script>
 </body>
-
-</html>
-
-
+                        </html>
