@@ -4,69 +4,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pergamena Antica | inchiostro</title>
-    
     <meta name="description" content="Pergamena Antica: profumo con incenso, patchouli, vaniglia bourbon e zafferano. Un'essenza senza tempo." />
     
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-W9QRVGZM');</script>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-W9QRVGZM');</script>
     
-    <!-- FONT E ICONE -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Cinzel:wght@400;500;600;700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- IUBENDA -->
     <script type="text/javascript" src="https://embeds.iubenda.com/widgets/57328da2-478a-435b-9132-7f843cff44dc.js"></script>
-    
-    <!-- JSON-LD -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "name": "Pergamena Antica",
-      "description": "Note di incenso, patchouli, vaniglia bourbon e un tocco di zafferano per un'essenza senza tempo.",
-      "image": "https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=600&auto=format&fit=crop",
-      "brand": {
-        "@type": "Brand",
-        "name": "Inchiostro"
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "240.00",
-        "priceCurrency": "EUR",
-        "availability": "https://schema.org/InStock"
-      }
-    }
-    </script>
-    
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23d4af37'>I</text></svg>">
 </head>
 <body>
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W9QRVGZM"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W9QRVGZM" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-    <header class="main-header">...</header>
-    
-    <nav class="navbar" id="navbar">...</nav>
-    
-    <aside class="cart-sidebar" id="cartSidebar">...</aside>
+    <!-- HEADER -->
+    <header class="main-header" style="height: 40vh; min-height: 300px;">
+        <div class="header-background"></div>
+        <div class="floating-drops">
+            <div class="drop" style="left: 5%; animation-delay: 0s;"></div>
+            <div class="drop" style="left: 15%; animation-delay: 2.5s;"></div>
+            <div class="drop" style="left: 25%; animation-delay: 1.2s;"></div>
+            <div class="drop" style="left: 35%; animation-delay: 3.8s;"></div>
+            <div class="drop" style="left: 45%; animation-delay: 0.7s;"></div>
+        </div>
+        <div class="header-content">
+            <h1 class="brand-name animate-text">inchiostro</h1>
+            <p class="brand-subtitle">scegli il profumo che crea la tua storia</p>
+        </div>
+    </header>
+
+    <!-- NAVIGAZIONE -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="nav-logo">inchiostro</a>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Homepage</a></li>
+                <li><a href="index.html#prodotti" class="nav-link">Acquista</a></li>
+                <li><a href="index.html#account" class="nav-link">Account</a></li>
+                <li><a href="index.html#chi-siamo" class="nav-link">Chi siamo</a></li>
+                <li><a href="contatti.html" class="nav-link">Contatti</a></li>
+            </ul>
+            <div class="nav-cart">
+                <button class="cart-btn" id="cartButton">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </button>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- CARRELLO -->
+    <aside class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Il tuo carrello</h3>
+            <button class="close-cart" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="empty-cart-msg">Il carrello è vuoto</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Totale:</span>
+                <span class="total-price">€0.00</span>
+            </div>
+            <button class="checkout-btn" id="checkoutBtn">Procedi al checkout</button>
+        </div>
+    </aside>
     <div class="cart-overlay" id="cartOverlay"></div>
 
-    <div class="vapor-effect">...</div>
+    <div class="vapor-effect">
+        <div class="vapor"></div>
+        <div class="vapor"></div>
+        <div class="vapor"></div>
+    </div>
 
+    <!-- PRODOTTO -->
     <main class="main-content">
         <section class="product-detail-section" style="padding: 60px 20px; max-width: 1200px; margin: 0 auto;">
             <div class="product-detail" style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;">
                 <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=600&auto=format&fit=crop" 
-                         alt="Pergamena Antica" 
-                         style="width: 100%; border-radius: 12px; box-shadow: var(--ombra-forte);">
+                    <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=600&auto=format&fit=crop" alt="Pergamena Antica" style="width: 100%; border-radius: 12px; box-shadow: var(--ombra-forte);">
                 </div>
                 <div class="product-info">
                     <h1 class="perfume-name" style="font-size: 2.5rem; margin-bottom: 20px;">Pergamena Antica</h1>
@@ -92,7 +119,53 @@
         </section>
     </main>
 
-    <footer class="main-footer">...</footer>
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3 class="footer-logo">inchiostro</h3>
+                <p class="footer-tagline">scegli il profumo che crea la tua storia</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Esplora</h4>
+                    <ul>
+                        <li><a href="index.html">Homepage</a></li>
+                        <li><a href="index.html#prodotti">Acquista</a></li>
+                        <li><a href="index.html#chi-siamo">Chi siamo</a></li>
+                        <li><a href="index.html#account">Account</a></li>
+                        <li><a href="contatti.html">Contatti</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Supporto</h4>
+                    <ul>
+                        <li><a href="#">Spedizioni</a></li>
+                        <li><a href="#">Resi</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Privacy</h4>
+                    <ul>
+                        <li><a href="https://www.iubenda.com/privacy-policy/72901956" class="iubenda-black">Privacy Policy</a></li>
+                        <li><a href="https://www.iubenda.com/privacy-policy/72901956/cookie-policy" class="iubenda-black">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Seguici</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 inchiostro. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
 
     <div class="toast" id="toast"></div>
     <script src="script.js"></script>
